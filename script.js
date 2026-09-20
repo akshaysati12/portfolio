@@ -339,10 +339,15 @@ function initContactForm() {
     const btn = form.querySelector('button[type="submit"]');
     const originalHTML = btn.innerHTML;
 
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const subject = form.subject.value.trim();
-    const message = form.message.value.trim();
+    const name = form.name ? form.name.value.trim() : '';
+    const email = form.email ? form.email.value.trim() : '';
+    const subject = form.subject ? form.subject.value.trim() : '';
+    const message = form.message ? form.message.value.trim() : '';
+
+    if (!name || !email || !message) {
+      alert('Please fill out all required fields.');
+      return;
+    }
 
     // UI: Transmitting state
     btn.disabled = true;
@@ -353,27 +358,66 @@ function initContactForm() {
 
     let success = false;
 
-    // 1. Try local Express backend or Vercel serverless function
-    try {
-      const endpoint = window.location.hostname === 'localhost' ? '/api/send-email' : '/api/send';
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, subject, message })
-      });
-      if (response.ok) {
-        success = true;
+    // 1. If running on local Express server with Resend configured
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      try {
+        const localRes = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, subject, message })
+        });
+        if (localRes.ok) {
+          success = true;
+        }
+      } catch (err) {
+        console.log('Local backend not responding, trying direct service...');
       }
-    } catch (err) {
-      console.warn('Backend endpoint unavailable, falling back to mailto link.');
+    }
+
+    // 2. Direct static site delivery via FormSubmit.co API
+    if (!success) {
+      try {
+        const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            _subject: `⚡ [Portfolio Inquiry] ${subject || 'New Contact'} from ${name}`,
+            _replyto: email,
+            _template: 'table',
+            message: message
+          })
+        });
+
+        const data = await response.json();
+        if (response.ok && data.success !== 'false') {
+          success = true;
+        }
+      } catch (err) {
+        console.error('Email service error:', err);
+      }
     }
 
     // UI Feedback
-    btn.innerHTML = '<i class="fas fa-check"></i> Email Transmitted Successfully!';
-    btn.style.background = 'rgba(0, 255, 136, 0.25)';
-    btn.style.borderColor = 'var(--neon-green)';
-    btn.style.color = 'var(--neon-green)';
-    form.reset();
+    if (success) {
+      btn.innerHTML = '<i class="fas fa-check"></i> Email Transmitted Successfully!';
+      btn.style.background = 'rgba(0, 255, 136, 0.25)';
+      btn.style.borderColor = 'var(--neon-green)';
+      btn.style.color = 'var(--neon-green)';
+      form.reset();
+    } else {
+      btn.innerHTML = '<i class="fas fa-envelope"></i> Opening Mail Client...';
+      btn.style.background = 'rgba(255, 138, 0, 0.25)';
+      btn.style.borderColor = 'var(--neon-orange)';
+      btn.style.color = 'var(--neon-orange)';
+      
+      // Fallback: Open mailto link
+      window.location.href = `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`Hi Akshay,\n\nName: ${name}\nEmail: ${email}\n\n${message}`)}`;
+    }
 
     setTimeout(() => {
       btn.innerHTML = originalHTML;
@@ -381,7 +425,7 @@ function initContactForm() {
       btn.style.borderColor = '';
       btn.style.color = '';
       btn.disabled = false;
-    }, 4000);
+    }, 4500);
   });
 }
 
