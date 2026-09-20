@@ -5,6 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "build": "node build.js",
+    "deploy": "node build.js && wrangler deploy",
     "start": "node server.js",
     "dev": "node server.js"
   },
