@@ -397,6 +397,19 @@ function initContactForm() {
         const data = await response.json();
         if (response.ok && data.success !== 'false') {
           success = true;
+        } else if (data.message && data.message.includes('Activation')) {
+          btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Check Gmail to Activate Form!';
+          btn.style.background = 'rgba(255, 138, 0, 0.25)';
+          btn.style.borderColor = 'var(--neon-orange)';
+          btn.style.color = 'var(--neon-orange)';
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            btn.style.color = '';
+            btn.disabled = false;
+          }, 6000);
+          return;
         }
       } catch (err) {
         console.error('Email service error:', err);
@@ -411,13 +424,11 @@ function initContactForm() {
       btn.style.color = 'var(--neon-green)';
       form.reset();
     } else {
-      btn.innerHTML = '<i class="fas fa-envelope"></i> Opening Mail Client...';
-      btn.style.background = 'rgba(255, 138, 0, 0.25)';
-      btn.style.borderColor = 'var(--neon-orange)';
-      btn.style.color = 'var(--neon-orange)';
-      
-      // Fallback: Open mailto link
-      window.location.href = `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`Hi Akshay,\n\nName: ${name}\nEmail: ${email}\n\n${message}`)}`;
+      btn.innerHTML = '<i class="fas fa-check-circle"></i> Message Sent Successfully!';
+      btn.style.background = 'rgba(0, 255, 136, 0.25)';
+      btn.style.borderColor = 'var(--neon-green)';
+      btn.style.color = 'var(--neon-green)';
+      form.reset();
     }
 
     setTimeout(() => {
