@@ -1,0 +1,11 @@
+node_modules
+node_modules/
+.git
+.gitignore
+.env
+.env.*
+server.js
+create_resume_pdf.js
+generate_pdf.js
+package.json
+package-lock.json
