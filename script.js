@@ -358,20 +358,21 @@ function initContactForm() {
 
     let success = false;
 
-    // 1. If running on local Express server with Resend configured
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      try {
-        const localRes = await fetch('/api/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, subject, message })
-        });
-        if (localRes.ok) {
+    // 1. Try backend/serverless endpoint (/api/send-email) with Resend
+    try {
+      const endpointRes = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message })
+      });
+      if (endpointRes.ok) {
+        const endpointData = await endpointRes.json();
+        if (endpointData.success !== false) {
           success = true;
         }
-      } catch (err) {
-        console.log('Local backend not responding, trying direct service...');
       }
+    } catch (err) {
+      console.log('/api/send-email not available, falling back to direct service...');
     }
 
     // 2. Direct static site delivery via FormSubmit.co API
