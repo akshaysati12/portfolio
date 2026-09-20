@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akshay | Cybersecurity & Software Engineer</title>
+  <meta name="description" content="Portfolio of Akshay — a versatile Computer Science student specializing in Information Security, Cybersecurity, and Full-Stack Software Development." />
+  <meta name="keywords" content="Akshay, Cybersecurity, Software Engineer, Portfolio, Hacker, Developer, SOC Analyst, Network Security" />
+  <meta name="author" content="Akshay" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Matrix Rain Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-terminal">
+      <div class="loader-header">
+        <span class="loader-dot red"></span>
+        <span class="loader-dot yellow"></span>
+        <span class="loader-dot green"></span>
+        <span class="loader-title">root@cyber-node:~</span>
+      </div>
+      <div class="loader-body">
+        <p class="loader-prompt-line">
+          <span class="prompt">akshay@cyber-node:~$</span> <span id="loader-typed-cmd"></span><span class="loader-cmd-cursor">_</span>
+        </p>
+        <div class="loader-output-lines" id="loader-output-lines">
+          <p class="loader-line" id="loader-line-1"><span class="cmd-ok">[+]</span> Initializing security modules...</p>
+          <p class="loader-line" id="loader-line-2"><span class="cmd-ok">[+]</span> Loading kernel drivers & defense matrix...</p>
+          <p class="loader-line" id="loader-line-3"><span class="cmd-ok">[+]</span> Establishing encrypted SSH tunnel [AES-256]...</p>
+          <p class="loader-line" id="loader-line-4"><span class="cmd-ok">[+]</span> Decrypting developer portfolio assets...</p>
+          <p class="loader-line" id="loader-line-5"><span class="cmd-success">[ACCESS GRANTED]</span> Welcome, Operator Akshay. <span class="blink">█</span></p>
+        </div>
+      </div>
+      <div class="loader-progress">
+        <div class="loader-progress-bar" id="loader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">AK</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link active" data-section="home">
+          <span class="nav-link-number">01.</span> Home
+        </a>
+        <a href="#about" class="nav-link" data-section="about">
+          <span class="nav-link-number">02.</span> About
+        </a>
+        <a href="#experience" class="nav-link" data-section="experience">
+          <span class="nav-link-number">03.</span> Experience
+        </a>
+        <a href="#projects" class="nav-link" data-section="projects">
+          <span class="nav-link-number">04.</span> Projects
+        </a>
+        <a href="#skills" class="nav-link" data-section="skills">
+          <span class="nav-link-number">05.</span> Skills
+        </a>
+        <a href="#contact" class="nav-link" data-section="contact">
+          <span class="nav-link-number">06.</span> Contact
+        </a>
+        <a href="Akshay_Resume.pdf" download="Akshay_Resume.pdf" class="nav-btn-resume" target="_blank">
+          <i class="fas fa-file-arrow-down"></i> Resume
+        </a>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#home" class="mobile-link" data-section="home">01. Home</a>
+    <a href="#about" class="mobile-link" data-section="about">02. About</a>
+    <a href="#experience" class="mobile-link" data-section="experience">03. Experience</a>
+    <a href="#projects" class="mobile-link" data-section="projects">04. Projects</a>
+    <a href="#skills" class="mobile-link" data-section="skills">05. Skills</a>
+    <a href="#contact" class="mobile-link" data-section="contact">06. Contact</a>
+    <a href="Akshay_Resume.pdf" download="Akshay_Resume.pdf" class="btn btn-resume" target="_blank">
+      <i class="fas fa-file-arrow-down"></i> Download Resume
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-terminal-tag">
+          <span class="tag-icon"><i class="fas fa-terminal"></i></span>
+          <span class="typing-text" id="typing-greeting"></span>
+          <span class="cursor-blink">|</span>
+        </div>
+        <h1 class="hero-name glitch" data-text="AKSHAY">AKSHAY</h1>
+        <div class="hero-title-wrapper">
+          <span class="hero-title-prefix">&gt; </span>
+          <h2 class="hero-title" id="hero-title"></h2>
+          <span class="hero-title-cursor">_</span>
+        </div>
+        <p class="hero-description">
+          Detail-oriented <span class="highlight">Software Engineer</span> with a strong foundation in
+          <span class="highlight">Cyber Security</span> and <span class="highlight">Development</span>.
+          Proficient in Java, Python, and SQL — building secure, scalable, high-performance applications.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">
+            <span class="btn-icon"><i class="fas fa-code"></i></span>
+            View Projects
+            <span class="btn-arrow">&rarr;</span>
+          </a>
+          <a href="Akshay_Resume.pdf" download="Akshay_Resume.pdf" class="btn btn-resume" target="_blank">
+            <span class="btn-icon"><i class="fas fa-file-arrow-down"></i></span>
+            Download Resume (PDF)
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <span class="btn-icon"><i class="fas fa-shield-halved"></i></span>
+            Get In Touch
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" data-count="6">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="3">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Internships</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="5">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="profile-wrapper">
+          <div class="profile-ring ring-1"></div>
+          <div class="profile-ring ring-2"></div>
+          <div class="profile-ring ring-3"></div>
+          <div class="profile-image-container">
+            <img src="profile.jpg" alt="Akshay - Cybersecurity & Software Engineer" class="profile-image" />
+            <div class="profile-glow"></div>
+          </div>
+          <div class="orbit-dot dot-1"><i class="fas fa-lock"></i></div>
+          <div class="orbit-dot dot-2"><i class="fas fa-code"></i></div>
+          <div class="orbit-dot dot-3"><i class="fas fa-bug"></i></div>
+          <div class="orbit-dot dot-4"><i class="fas fa-database"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse">
+        <div class="mouse-wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&lt;about&gt;</span>
+        <h2 class="section-title">About <span class="highlight">Me</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">about_akshay.sh</span>
+            </div>
+            <div class="terminal-body">
+              <p class="terminal-line"><span class="prompt">akshay@sec:~$</span> cat about.txt</p>
+              <p class="terminal-output">
+                A versatile Computer Science student specializing in Information Security,
+                with a strong passion for <span class="cmd-highlight">cybersecurity</span> and
+                <span class="cmd-highlight">software development</span>. Skilled in designing,
+                developing, and securing applications with hands-on experience in
+                <span class="cmd-highlight">Networking</span>, <span class="cmd-highlight">Vulnerability Analysis</span>,
+                <span class="cmd-highlight">Frontend & Backend Development</span>, and
+                <span class="cmd-highlight">Cloud Technologies</span>.
+              </p>
+              <p class="terminal-line"><span class="prompt">akshay@sec:~$</span> echo $GOAL</p>
+              <p class="terminal-output">
+                Seeking a challenging role that integrates both field expertise to contribute to innovative projects.
+                Adaptable, eager to learn, and thrive in dynamic environments.
+              </p>
+              <p class="terminal-line"><span class="prompt">akshay@sec:~$</span> <span class="blink">█</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="about-cards">
+          <div class="info-card" data-aos="fade-up">
+            <div class="info-card-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Education</h3>
+            <div class="education-item">
+              <h4>M.E-CSE (Cyber Security)</h4>
+              <p>UIET – Panjab University, Chandigarh</p>
+              <span class="date-badge">Sep 2025 - Oct 2027 | CGPA: 8.5</span>
+            </div>
+            <div class="education-item">
+              <h4>B.E-CSE (Information Security)</h4>
+              <p>Chandigarh University, Punjab</p>
+              <span class="date-badge">Aug 2022 - May 2025 | CGPA: 8.01</span>
+            </div>
+          </div>
+          <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-card-icon"><i class="fas fa-certificate"></i></div>
+            <h3>Certifications</h3>
+            <ul class="cert-list">
+              <li><span class="cert-bullet"><i class="fas fa-shield-halved"></i></span> CompTIA Security+ (SY701)</li>
+              <li><span class="cert-bullet"><i class="fas fa-network-wired"></i></span> Certified Network Security Practitioner (CNSP)</li>
+              <li><span class="cert-bullet"><i class="fas fa-mobile-screen-button"></i></span> Certified APPSec Practitioner (CAP)</li>
+              <li><span class="cert-bullet"><i class="fas fa-file-shield"></i></span> ISO 27001-(ISMS) by Alison</li>
+              <li><span class="cert-bullet"><i class="fas fa-magnifying-glass"></i></span> Cyber Threat Intelligence 101 (CTI-101)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <span class="section-tag section-tag-close">&lt;/about&gt;</span>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section experience" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&lt;experience&gt;</span>
+        <h2 class="section-title">Work <span class="highlight">Experience</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <!-- Experience 1 -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-marker">
+            <div class="timeline-marker-inner"><i class="fas fa-shield-virus"></i></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3>SOC Analyst Intern</h3>
+                <p class="company">SafeAeon Inc.</p>
+              </div>
+              <span class="timeline-date">
+                <i class="far fa-calendar-alt"></i> Jul 2025 - Sep 2025
+              </span>
+            </div>
+            <ul class="timeline-details">
+              <li>Monitored and analyzed <strong>security alerts</strong> using industry-leading tools like <span class="tech-tag">Rapid7</span>, <span class="tech-tag">SentinelOne</span>, and <span class="tech-tag">Avanan Email Security</span>.</li>
+              <li>Investigated and responded to potential <strong>cyber threats</strong>, contributing to the overall security posture of the company.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Experience 2 -->
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-marker">
+            <div class="timeline-marker-inner"><i class="fas fa-network-wired"></i></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3>Network Security Intern</h3>
+                <p class="company">Indian Cyber Crime Coordination Center (I4C) – MHA</p>
+              </div>
+              <span class="timeline-date">
+                <i class="far fa-calendar-alt"></i> Dec 2024 - Feb 2025
+              </span>
+            </div>
+            <ul class="timeline-details">
+              <li>Configured switches, managed firewalls, and set up servers with <span class="tech-tag">RAID</span>, <span class="tech-tag">Hyper-V</span>, <span class="tech-tag">Tacacs</span> Configuration and <span class="tech-tag">iDRAC</span>.</li>
+              <li>Worked on designing a <strong>secure and scalable network infrastructure</strong> for I4C.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Experience 3 -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-marker">
+            <div class="timeline-marker-inner"><i class="fas fa-code"></i></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3>Java Intern</h3>
+                <p class="company">CBitss</p>
+              </div>
+              <span class="timeline-date">
+                <i class="far fa-calendar-alt"></i> Jan 2023 - Mar 2023
+              </span>
+            </div>
+            <ul class="timeline-details">
+              <li>Gained hands-on experience in <strong>API connectivity</strong> and <strong>database integration</strong> for building enterprise-level Java projects.</li>
+              <li>Developed user interfaces and optimized application performance using <span class="tech-tag">NetBeans</span> through debugging and code refinement.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <span class="section-tag section-tag-close">&lt;/experience&gt;</span>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&lt;projects&gt;</span>
+        <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="security">Security</button>
+        <button class="filter-btn" data-filter="development">Development</button>
+      </div>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card" data-category="development" data-aos="fade-up">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-plane-departure"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link-icon" title="View Code"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Tour & Travel Website</h3>
+          <p class="project-description">
+            Developed a Flight Search Platform that allows users to find flights across 50+ international airports and
+            redirects them to booking pages of 40+ airlines using live flight data.
+          </p>
+          <div class="project-tech">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <span class="project-date">Feb 2026</span>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-image"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link-icon" title="View Code"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Image Forensics Steganographic Technique</h3>
+          <p class="project-description">
+            Developed an Image Forensics project using frequency domain steganography (DCT, DWT, FFT).
+            Analyzed techniques for secure data embedding and detection in digital images.
+          </p>
+          <div class="project-tech">
+            <span>Python</span><span>StreamLit</span><span>CV2</span><span>NumPy</span><span>Tkinter</span>
+          </div>
+          <span class="project-date">Jan 2026</span>
+        </div>
+        <!-- Project 3 -->
+        <div class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-microchip"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link-icon" title="View Code"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Crypto-Jacking Detection Tool</h3>
+          <p class="project-description">
+            Implemented a Python-based Detection Tool with real-time monitoring of CPU, GPU, memory, and network activity.
+            Integrated alerts, process termination, and IP blocking features to prevent unauthorized cryptocurrency mining.
+          </p>
+          <div class="project-tech">
+            <span>Python</span><span>GUI</span><span>Networking</span>
+          </div>
+          <span class="project-date">Dec 2025</span>
+        </div>
+        <!-- Project 4 -->
+        <div class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-radar"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link-icon" title="View Code"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">RAS: The Free SIEM Tool Solution</h3>
+          <p class="project-description">
+            Developed a real-time security monitoring system using Elasticsearch, Kibana, and Fluentd.
+            Collected, analyzed, and visualized security logs to detect suspicious activity.
+          </p>
+          <div class="project-tech">
+            <span>WAZUH</span><span>Bash</span><span>Linux</span><span>Elasticsearch</span><span>Kibana</span>
+          </div>
+          <span class="project-date">Jan 2025</span>
+        </div>
+        <!-- Project 5 -->
+        <div class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="400">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-bug"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link-icon" title="View Code"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Vulnerability Scanner</h3>
+          <p class="project-description">
+            Developed a web-based vulnerability scanner aimed at identifying and reporting security vulnerabilities.
+            Integrated key features: Cross-Site Request Forgery (CSRF) and SQL Injection detection.
+          </p>
+          <div class="project-tech">
+            <span>Python</span><span>Web Security</span><span>OWASP</span>
+          </div>
+          <span class="project-date">Aug 2024</span>
+        </div>
+        <!-- Project 6 -->
+        <div class="project-card" data-category="development" data-aos="fade-up" data-aos-delay="500">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-book"></i></div>
+            <div class="project-links">
+              <a href="#" class="project-link-icon" title="View Code"><i class="fab fa-github"></i></a>
+              <a href="#" class="project-link-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Library Management System</h3>
+          <p class="project-description">
+            Designed a role-based system for library operations, including book issuance, returns, and user management.
+            Implemented secure authentication and a user-friendly interface.
+          </p>
+          <div class="project-tech">
+            <span>Java</span><span>MySQL</span><span>NetBeans</span><span>JDBC</span>
+          </div>
+          <span class="project-date">Aug 2023</span>
+        </div>
+      </div>
+      <span class="section-tag section-tag-close">&lt;/projects&gt;</span>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&lt;skills&gt;</span>
+        <h2 class="section-title">Tech <span class="highlight">Arsenal</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <!-- Programming -->
+        <div class="skill-category" data-aos="fade-up">
+          <div class="skill-category-header">
+            <div class="skill-category-icon"><i class="fas fa-terminal"></i></div>
+            <h3>Programming / Scripting</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="fab fa-java"></i>
+              <span>Java</span>
+            </div>
+            <div class="skill-item">
+              <i class="fab fa-python"></i>
+              <span>Python</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-c"></i>
+              <span>C</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-database"></i>
+              <span>SQL</span>
+            </div>
+            <div class="skill-item">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </div>
+          </div>
+        </div>
+        <!-- Cybersecurity -->
+        <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+          <div class="skill-category-header">
+            <div class="skill-category-icon"><i class="fas fa-shield-halved"></i></div>
+            <h3>Cybersecurity</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="fas fa-network-wired"></i>
+              <span>Networking</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-key"></i>
+              <span>Cryptography</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-chart-line"></i>
+              <span>SIEM</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-list-check"></i>
+              <span>OWASP Top 10</span>
+            </div>
+            <div class="skill-item">
+              <i class="fab fa-linux"></i>
+              <span>Linux</span>
+            </div>
+          </div>
+        </div>
+        <!-- Development -->
+        <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+          <div class="skill-category-header">
+            <div class="skill-category-icon"><i class="fas fa-code"></i></div>
+            <h3>Software Development</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="fas fa-globe"></i>
+              <span>Web Dev</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-sitemap"></i>
+              <span>DSA</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-puzzle-piece"></i>
+              <span>API Integration</span>
+            </div>
+            <div class="skill-item">
+              <i class="fab fa-git-alt"></i>
+              <span>Git</span>
+            </div>
+          </div>
+        </div>
+        <!-- Security Tools -->
+        <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+          <div class="skill-category-header">
+            <div class="skill-category-icon"><i class="fas fa-toolbox"></i></div>
+            <h3>Security Tools</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="fas fa-crosshairs"></i>
+              <span>Nmap</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-fish"></i>
+              <span>Wireshark</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-skull-crossbones"></i>
+              <span>Metasploit</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-spider"></i>
+              <span>Burp Suite</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-wifi"></i>
+              <span>Aircrack-ng</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-diagram-project"></i>
+              <span>Maltego</span>
+            </div>
+          </div>
+        </div>
+        <!-- Database -->
+        <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+          <div class="skill-category-header">
+            <div class="skill-category-icon"><i class="fas fa-server"></i></div>
+            <h3>Database</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="fas fa-database"></i>
+              <span>MySQL</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-server"></i>
+              <span>XAMPP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="section-tag section-tag-close">&lt;/skills&gt;</span>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">&lt;contact&gt;</span>
+        <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-cards">
+            <a href="mailto:akshaysati2002@gmail.com" class="contact-card">
+              <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-card-details">
+                <h4>Email</h4>
+                <p>akshaysati2002@gmail.com</p>
+              </div>
+            </a>
+            <div class="contact-card">
+              <div class="contact-card-icon"><i class="fas fa-location-dot"></i></div>
+              <div class="contact-card-details">
+                <h4>Location</h4>
+                <p>Chandigarh, India</p>
+              </div>
+            </div>
+            <div class="contact-card status-card">
+              <div class="contact-card-icon pulse-icon"><i class="fas fa-circle"></i></div>
+              <div class="contact-card-details">
+                <h4>Status</h4>
+                <p>Open to Opportunities</p>
+              </div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/akshay-sati-b41bb5283/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/akshaysati12?tab=repositories" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="mailto:akshaysati2002@gmail.com" class="social-link" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form-wrapper">
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="name"><i class="fas fa-user"></i> Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+              <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Enter subject" required />
+            </div>
+            <div class="form-group">
+              <label for="message"><i class="fas fa-comment-dots"></i> Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+              Send Message
+              <span class="btn-arrow">&rarr;</span>
+            </button>
+          </form>
+        </div>
+      </div>
+      <span class="section-tag section-tag-close">&lt;/contact&gt;</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-bracket">&lt;</span>
+          <span class="logo-text">AKSHAY</span>
+          <span class="logo-bracket">/&gt;</span>
+        </div>
+        <p class="footer-tagline">Securing the digital frontier, one line of code at a time.</p>
+        <div class="footer-divider"></div>
+        <p class="footer-copy">&copy; 2026 Akshay. Designed & Built with <span class="heart">&hearts;</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Terminal Command Execution HUD Modal -->
+  <div class="terminal-cmd-modal" id="cmd-modal">
+    <div class="cmd-modal-box">
+      <div class="cmd-modal-header">
+        <span class="loader-dot red"></span>
+        <span class="loader-dot yellow"></span>
+        <span class="loader-dot green"></span>
+        <span class="cmd-modal-title">bash — security_gateway.sh</span>
+      </div>
+      <div class="cmd-modal-body">
+        <p class="cmd-modal-line"><span class="prompt">akshay@sec:~$</span> <span id="cmd-modal-typed"></span><span class="cursor-blink">_</span></p>
+        <div class="cmd-modal-logs" id="cmd-modal-logs"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
